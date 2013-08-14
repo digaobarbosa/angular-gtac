@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../libs/bootstrap/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="ListController">
+        <div class="well" >
+            <ul>
+                <li ng-repeat="item in items">
+                    {{item.description}}
+                    <i class="{{item.done && 'icon-ok' || 'icon-eye-open'}}"></i>
+                    {{item.dueDate | date:'dd/MM/yyyy'}}
+                    <input type="button" class="btn" value="Editar" ng-click="edit(item)">
+                </li>
+            </ul>
+        </div>
+        <input type="button" class="btn btn-success" value="Novo" ng-click="newItem()">
+
+        <div class="well" ng-show="editItem!=null">
+            <label>
+                <input ng-model="editItem.description">
+            </label>
+            <label>
+                <input ng-model="editItem.done" type="checkbox">
+            </label>
+            <button class="btn btn-primary" ng-click="save(editItem)">Adicionar</button>
+
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript plugins (requires jQuery) -->
+<script src="../libs/jquery.1.10.2.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../libs/bootstrap.js"></script>
+<script src="../libs/angular.js"></script>
+<script src="controllers.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+</body>
+</html>
